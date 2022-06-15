@@ -1,5 +1,5 @@
 const fs = require('fs')
-const parser = require('xml2json');
+// const parser = require('xml2json');
 
 // let jsonClass = __dirname + '/struct.json'
 // let jsonClass = fs.readFileSync(__dirname + '/struct.json', 'utf8')
@@ -9,13 +9,21 @@ let jsonClass = JSON.parse(one1())
 let globalDir = ""
 let dirOne = ""
 let dirTwo = ""
+
 const data = () => fs.readFileSync('./pom.xml', { endoding: 'utf8'})
-var json = JSON.parse(parser.toJson(data()))
-globalDir = globalDir + json.project.groupId.replace(".", "/").replace(".", "/").replace(".", "/")
-globalDir = "./src/main/java/" +globalDir + '/' + json.project.artifactId
-dirOne = json.project.groupId.replace(".", "/").replace(".", "/").replace(".", "/")
-dirTwo = json.project.artifactId
-dirPackage = (dirOne+"."+dirTwo).replaceAll("/", ".")
+// var json = JSON.parse(parser.toJson(data()))
+
+var convert = require('xml-js');
+var xml = data();
+var result1 = convert.xml2json(xml, {compact: true, spaces: 2});
+var json = JSON.parse(result1)
+
+globalDir = globalDir + json.project.groupId._text.replace(".", "/").replace(".", "/").replace(".", "/")
+globalDir = "./src/main/java/" +globalDir + '/' + json.project.artifactId._text
+dirOne = json.project.groupId._text.replace(".", "/").replace(".", "/").replace(".", "/")
+dirTwo = json.project.artifactId._text
+console.log(dirOne, dirTwo)
+var dirPackage = (dirOne+"."+dirTwo).replace("/", ".").replace("/", ".").replace("/", ".")
 
 function domainClass(data, className) {
   let str = 'package '+ dirPackage +'.domain; \n\n'

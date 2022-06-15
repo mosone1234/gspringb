@@ -16,6 +16,6 @@
   "author": "Ayar Pérez",
   "license": "MIT",
   "dependencies": {
-    "xml2json": "^0.12.0"
+    "xml-js": "^1.6.11"
   }
 }
