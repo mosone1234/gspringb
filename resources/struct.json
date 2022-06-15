@@ -1,0 +1,68 @@
+[
+  {
+      "entity": "Package",
+      "dir": ["domain", "repository", "dto", "service"],
+      "subdir": ["service/mapper", "web/rest"],
+      "values": [
+	    "String Id saleProductId",
+      	"Sale ManyToOne saleId",
+      	"Product ManyToOne productId",
+      	"Integer Column cuantity"
+      ]
+  },
+  {
+      "entity": "Product",
+      "dir": ["domain", "repository", "dto", "service"],
+      "subdir": ["service/mapper", "web/rest"],
+      "values": [
+	    "String Id productId",
+      	"String Column productName",
+      	"Integer Column price",
+      	"String Column sku"
+      ]
+  },
+  {
+      "entity": "Sale",
+      "dir": ["domain", "repository", "dto", "service"],
+      "subdir": ["service/mapper", "web/rest"],
+      "values": [
+	    "String Id saleId",
+      	"Date Column date",
+      	"String Column email",
+      	"SalesMan ManyToOne salesManId"
+      ]
+  },
+  {
+      "entity": "SalesMan",
+      "dir": ["domain", "repository", "dto", "service"],
+      "subdir": ["service/mapper", "web/rest"],
+      "values": [
+	    "String Id salesManId",
+      	"String Column name",
+      	"String Column email",
+      	"Store ManyToOne storeId"
+      ]
+  },
+  {
+      "entity": "Stock",
+      "dir": ["domain", "repository", "dto", "service"],
+      "subdir": ["service/mapper", "web/rest"],
+      "values": [
+	    "String Id stockId",
+      	"Integer Column stock",
+      	"Store ManyToOne storeId",
+      	"Product ManyToOne productId"
+      ]
+  },
+  {
+      "entity": "Store",
+      "dir": ["domain", "repository", "dto", "service"],
+      "subdir": ["service/mapper", "web/rest"],
+      "values": [
+	    "String Id storeId",
+      	"String Column storeName",
+      	"String Column storeLocation",
+      	"Date Column creationDate"
+      ]
+  }
+]
